@@ -19,8 +19,7 @@
 
  配置:
  1.使用时需要修改 baidu_sound_rec.py 里面的这二个变量:
-   api_key = "@@@@@@@@@@@@@@" api_secert = "@@@@@@@@@@@@@@"
-    
+   api_key = "@@@@@@@@@@@@@@" api_secert = "@@@@@@@@@@@@@@"   
  2.采集到的声音内容存在放 /myram/snowboy.log
  为减少文件经常读写损坏tf卡, 在/etc/rc.local时增加了如下语句将内存虚拟了10M成硬盘使用:
  sudo mount -t tmpfs -o size=10m,mode=0777 tmpfs /myram
