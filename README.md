@@ -15,18 +15,16 @@
  5.如果识别到文字,则记录到log日志中, 同时将wav原始声音文件也放入循环目录备份(循环5个队列)
  
 
- 运行环境: 树莓派3B raspberrypi  
-           树莓派zero使用1-2天会发生采集录音数据异常,内存耗尽,进程被kill问题,可能是因为zero内存只有512M
-           已在3B上不关机连续运行半年,均正常.
+ 运行环境: 树莓派3B raspberrypi可稳定运行,半年不关机不会出故障. 但是在树莓派zero上运行1-2天后会发生采集录音数据异常,内存耗尽,进程被kill的现象,可能是因为zero内存只有512M,运行python代码时释放内存效果不好,未深究.
 
  配置:
  1.使用时需要修改 baidu_sound_rec.py 里面的这二个变量:
-   api_key = "@@@@@@@@@@@@@@"
-   api_secert = "@@@@@@@@@@@@@@"
+   api_key = "@@@@@@@@@@@@@@" api_secert = "@@@@@@@@@@@@@@"
     
  2.采集到的声音内容存在放 /myram/snowboy.log
  为减少文件经常读写损坏tf卡, 在/etc/rc.local时增加了如下语句将内存虚拟了10M成硬盘使用:
  sudo mount -t tmpfs -o size=10m,mode=0777 tmpfs /myram
+ 也可以跳过此步骤,直接创建 /myram路径.
 
  运行:
  python listener.py
